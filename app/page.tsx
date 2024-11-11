@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {Clock, Timer, Users} from 'lucide-react'
+import {ChefHat, Timer, Users} from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
@@ -68,7 +68,7 @@ export default function Home() {
                                         <span>{recipe.prepTime} min</span>
                                     </div>
                                     <div className="flex items-center">
-                                        <Clock className="w-4 h-4 mr-2" />
+                                        <ChefHat className="w-4 h-4 mr-2" />
                                         <span>{recipe.cookTime} min</span>
                                     </div>
                                 </div>

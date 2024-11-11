@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import {ChefHat, Clock, Timer, Users} from "lucide-react";
+import {ChefHat, Timer, Users} from "lucide-react";
 
 // Données statiques pour les recettes (à remplacer plus tard par des données de Back4App)
 const recipes = [

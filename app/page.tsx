@@ -1,43 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {ChefHat, Timer, Users} from 'lucide-react'
+import { Clock, Users } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import { getRecipes } from '@/lib/back4app'
 
-const recipes = [
-    {
-        id: 1,
-        title: "Ma recette",
-        description: "This is a card description.",
-        prepTime: 30,
-        cookTime: 20,
-        servings: 3,
-        difficulty: "Moyen",
-        image: "/placeholder.svg"
-    },
-    {
-        id: 2,
-        title: "Ma recette",
-        description: "This is a card description.",
-        prepTime: 12,
-        cookTime: 0,
-        servings: 2,
-        difficulty: "Facile",
-        image: "/placeholder.svg"
-    },
-    {
-        id: 3,
-        title: "Ma recette",
-        description: "This is a card description.",
-        prepTime: 12,
-        cookTime: 0,
-        servings: 2,
-        difficulty: "Difficile",
-        image: "/placeholder.svg"
-    },
-]
+export default async function Home() {
+    const recipes = await getRecipes()
 
-export default function Home() {
     return (
         <div className="container mx-auto px-4 py-8">
             <h1 className="text-3xl font-bold mb-6">Mes dernières recettes</h1>
@@ -46,7 +16,7 @@ export default function Home() {
                     <Link href={`/recipes/${recipe.id}`} key={recipe.id} className="block hover:shadow-lg transition-shadow duration-300">
                         <Card className="h-full flex flex-col">
                             <Image
-                                src={recipe.image}
+                                src={recipe.imageUrl}
                                 alt={recipe.title}
                                 width={400}
                                 height={300}
@@ -55,20 +25,18 @@ export default function Home() {
                             <CardHeader>
                                 <div className="flex justify-between items-center">
                                     <CardTitle>{recipe.title}</CardTitle>
-                                    <Badge variant={recipe.difficulty === "Facile" ? "secondary" : recipe.difficulty === "Moyen" ? "default" : "destructive"}>
-                                        {recipe.difficulty}
-                                    </Badge>
+                                    <Badge>{recipe.difficulty}</Badge>
                                 </div>
                                 <CardDescription>{recipe.description}</CardDescription>
                             </CardHeader>
                             <CardContent className="flex-grow">
                                 <div className="flex items-center justify-between mb-2">
                                     <div className="flex items-center">
-                                        <Timer className="w-4 h-4 mr-2" />
+                                        <Clock className="w-4 h-4 mr-2" />
                                         <span>{recipe.prepTime} min</span>
                                     </div>
                                     <div className="flex items-center">
-                                        <ChefHat className="w-4 h-4 mr-2" />
+                                        <Clock className="w-4 h-4 mr-2" />
                                         <span>{recipe.cookTime} min</span>
                                     </div>
                                 </div>

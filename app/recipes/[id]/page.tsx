@@ -2,7 +2,9 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import {ChefHat, Timer, Users} from "lucide-react";
+import {ArrowLeft, ChefHat, Timer, Users} from "lucide-react";
+import Link from "next/link";
+import {Button} from "@/components/ui/button";
 
 // Données statiques pour les recettes (à remplacer plus tard par des données de Back4App)
 const recipes = [
@@ -48,6 +50,14 @@ export default function RecipePage({ params }: { params: { id: string } }) {
 
     return (
         <div className="container max-w-screen-md mx-auto p-4">
+            <div className="mb-6">
+                <Button asChild variant="outline" size="sm">
+                    <Link href="/" className="flex items-center">
+                        <ArrowLeft className="mr-2 h-4 w-4"/>
+                        Retour aux recettes
+                    </Link>
+                </Button>
+            </div>
             <Card>
                 <Image
                     src={recipe.image}
